@@ -1,0 +1,20 @@
+06/06/2019 14:29:13 [INFO] [OnStart@39] Service starting
+06/06/2019 14:30:13 [INFO] [timer1_Elapsed@57] Running Update FundamentalKaohoon
+06/06/2019 14:30:15 [INFO] [Run@57] Success update data Kaohoon
+06/06/2019 14:31:13 [INFO] [timer1_Elapsed@57] Running Update FundamentalKaohoon
+06/06/2019 14:31:15 [INFO] [Run@57] Success update data Kaohoon
+06/06/2019 14:32:13 [INFO] [timer1_Elapsed@57] Running Update FundamentalKaohoon
+06/06/2019 14:32:15 [INFO] [Run@57] Success update data Kaohoon
+06/06/2019 14:33:13 [INFO] [timer1_Elapsed@57] Running Update FundamentalKaohoon
+06/06/2019 14:33:15 [INFO] [Run@57] Success update data Kaohoon
+06/06/2019 14:34:13 [INFO] [Timer2_Elapsed@63] Running Update News
+06/06/2019 14:34:13 [INFO] [timer1_Elapsed@57] Running Update FundamentalKaohoon
+06/06/2019 14:34:15 [INFO] [Run@57] Success update data Kaohoon
+06/06/2019 14:35:13 [INFO] [timer1_Elapsed@57] Running Update FundamentalKaohoon
+06/06/2019 14:35:15 [INFO] [Run@57] Success update data Kaohoon
+06/06/2019 14:36:13 [INFO] [timer1_Elapsed@57] Running Update FundamentalKaohoon
+06/06/2019 14:36:15 [INFO] [Run@57] Success update data Kaohoon
+06/06/2019 14:36:56 [INFO] [Run@79] Success update data News
+06/06/2019 14:37:13 [INFO] [timer1_Elapsed@57] Running Update FundamentalKaohoon
+06/06/2019 14:37:15 [INFO] [Run@57] Success update data Kaohoon
+06/06/2019 14:37:16 [INFO] [OnStop@48] Service stop

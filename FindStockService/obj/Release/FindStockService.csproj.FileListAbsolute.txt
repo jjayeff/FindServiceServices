@@ -1,0 +1,14 @@
+D:\Code\FindStockService\FindStockService\bin\Release\FindStockService.exe.config
+D:\Code\FindStockService\FindStockService\bin\Release\FindStockService.exe
+D:\Code\FindStockService\FindStockService\bin\Release\FindStockService.pdb
+D:\Code\FindStockService\FindStockService\obj\Release\FindStockService.csprojAssemblyReference.cache
+D:\Code\FindStockService\FindStockService\obj\Release\FindStockService.csproj.CoreCompileInputs.cache
+D:\Code\FindStockService\FindStockService\obj\Release\FindStockService.exe
+D:\Code\FindStockService\FindStockService\obj\Release\FindStockService.pdb
+D:\Code\FindStockService\FindStockService\obj\Release\FindStockService.ProjectInstaller.resources
+D:\Code\FindStockService\FindStockService\obj\Release\FindStockService.csproj.GenerateResource.cache
+D:\Code\FindStockService\FindStockService\obj\Release\FindStockService.Service1.resources
+D:\Code\FindStockService\FindStockService\bin\Release\HtmlAgilityPack.dll
+D:\Code\FindStockService\FindStockService\bin\Release\HtmlAgilityPack.pdb
+D:\Code\FindStockService\FindStockService\bin\Release\HtmlAgilityPack.xml
+D:\Code\FindStockService\FindStockService\obj\Release\FindStockService.csproj.CopyComplete

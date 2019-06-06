@@ -1,0 +1,9 @@
+D:\Code\FindStockService\FindStockService\bin\Debug\FindStockService.exe.config
+D:\Code\FindStockService\FindStockService\bin\Debug\FindStockService.exe
+D:\Code\FindStockService\FindStockService\bin\Debug\FindStockService.pdb
+D:\Code\FindStockService\FindStockService\obj\Debug\FindStockService.csprojAssemblyReference.cache
+D:\Code\FindStockService\FindStockService\obj\Debug\FindStockService.csproj.CoreCompileInputs.cache
+D:\Code\FindStockService\FindStockService\obj\Debug\FindStockService.exe
+D:\Code\FindStockService\FindStockService\obj\Debug\FindStockService.pdb
+D:\Code\FindStockService\FindStockService\obj\Debug\FindStockService.ProjectInstaller.resources
+D:\Code\FindStockService\FindStockService\obj\Debug\FindStockService.csproj.GenerateResource.cache
