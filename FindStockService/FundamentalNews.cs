@@ -128,27 +128,31 @@ namespace FindStockService
             int index = 0;
             foreach (HtmlNode node in doc1.DocumentNode.SelectNodes("//table[@class='table table-hover table-info-wrap']"))
             {
-                if (index++ == 1)
-                    foreach (HtmlNode row in node.SelectNodes(".//tbody//tr"))
-                    {
-                        result = new News();
-                        result.Symbol = symbol;
-                        index = 0;
-                        foreach (HtmlNode cell in row.SelectNodes(".//td"))
+                if (++index == doc1.DocumentNode.SelectNodes("//table[@class='table table-hover table-info-wrap']").Count)
+                {
+                    if (node.SelectNodes(".//tbody//tr") != null)
+                        foreach (HtmlNode row in node.SelectNodes(".//tbody//tr"))
                         {
-                            if (index == 0)
-                                result.DateTime = ChangeDateFormat3(cell.InnerText.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace("  ", ""));
-                            else if (index == 2)
-                                result.Source = cell.InnerText.Replace("\r\n", "").Replace("\n", "").Replace("\r", "");
-                            else if (index == 3)
-                                result.Headline = cell.InnerText.Replace("\r\n", "").Replace("\n", "").Replace("\r", "");
-                            else if (index == 4)
-                                result.Link = "https://www.set.or.th" + cell.SelectSingleNode(".//a[@href]").GetAttributeValue("href", string.Empty);
-                            index++;
+                            result = new News();
+                            result.Symbol = symbol;
+                            index = 0;
+                            foreach (HtmlNode cell in row.SelectNodes(".//td"))
+                            {
+                                if (index == 0)
+                                    result.DateTime = ChangeDateFormat3(cell.InnerText.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace("  ", ""));
+                                else if (index == 2)
+                                    result.Source = cell.InnerText.Replace("\r\n", "").Replace("\n", "").Replace("\r", "");
+                                else if (index == 3)
+                                    result.Headline = cell.InnerText.Replace("\r\n", "").Replace("\n", "").Replace("\r", "");
+                                else if (index == 4)
+                                    result.Link = "https://www.set.or.th" + cell.SelectSingleNode(".//a[@href]").GetAttributeValue("href", string.Empty);
+                                index++;
+                            }
+                            news.Add(result);
                         }
-                        news.Add(result);
-                    }
-
+                    else
+                        log.LOGE($"{url}");
+                }
             }
 
             foreach (var value in news)
