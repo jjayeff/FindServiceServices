@@ -12,3 +12,7 @@ D:\Code\FindStockService\FindStockService\bin\Release\HtmlAgilityPack.dll
 D:\Code\FindStockService\FindStockService\bin\Release\HtmlAgilityPack.pdb
 D:\Code\FindStockService\FindStockService\bin\Release\HtmlAgilityPack.xml
 D:\Code\FindStockService\FindStockService\obj\Release\FindStockService.csproj.CopyComplete
+D:\Code\findStockService\FindStockService\bin\Release\MySql.Data.dll
+D:\Code\findStockService\FindStockService\bin\Release\Google.Protobuf.dll
+D:\Code\findStockService\FindStockService\bin\Release\BouncyCastle.Crypto.dll
+D:\Code\findStockService\FindStockService\bin\Release\MySql.Data.xml

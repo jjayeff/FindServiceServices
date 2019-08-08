@@ -36,13 +36,13 @@
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 60000D;
+            this.timer1.Interval = 300000D;
             this.timer1.Elapsed += new System.Timers.ElapsedEventHandler(this.Timer1_Elapsed);
             // 
             // timer2
             // 
             this.timer2.Enabled = true;
-            this.timer2.Interval = 300000D;
+            this.timer2.Interval = 3600000D;
             this.timer2.Elapsed += new System.Timers.ElapsedEventHandler(this.Timer2_Elapsed);
             // 
             // Service1

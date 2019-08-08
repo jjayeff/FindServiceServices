@@ -1,8 +1,8 @@
 ﻿using HtmlAgilityPack;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -44,7 +44,6 @@ namespace FindStockService
         // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         public void Run()
         {
-            log.LOGI("Running Update FundamentalKaohoon");
             List<string> symbols = new List<string>();
 
             // Get all symbol
@@ -178,54 +177,62 @@ namespace FindStockService
         // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
         // | Database Function                                               |
         // = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-        public static void UpdateDatebase(string sql, SqlConnection cnn)
+        public static void UpdateDatebase(string sql, MySqlConnection cnn)
         {
-            SqlCommand command;
-            SqlDataAdapter adapter = new SqlDataAdapter();
+            MySqlCommand command;
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
 
             try
             {
-                command = new SqlCommand(sql, cnn);
-                adapter.UpdateCommand = new SqlCommand(sql, cnn);
+                command = new MySqlCommand(sql, cnn);
+                adapter.UpdateCommand = new MySqlCommand(sql, cnn);
                 adapter.UpdateCommand.ExecuteNonQuery();
                 command.Dispose();
             }
-            catch (Exception ex)
+            catch
             {
-                log.LOGE($"[FundamentalSET100::UpdateDatebase]  {sql}");
+                log.LOGE($"{sql}");
             }
         }
-        public static void InsertDatebase(string sql, SqlConnection cnn)
+        private static void InsertDatebase(string sql, MySqlConnection cnn)
         {
-            SqlCommand command;
-            SqlDataAdapter adapter = new SqlDataAdapter();
+            MySqlCommand command;
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
 
             try
             {
-                command = new SqlCommand(sql, cnn);
-                adapter.InsertCommand = new SqlCommand(sql, cnn);
+                command = new MySqlCommand(sql, cnn);
+                adapter.InsertCommand = new MySqlCommand(sql, cnn);
                 adapter.InsertCommand.ExecuteNonQuery();
                 command.Dispose();
             }
-            catch (Exception ex)
+            catch
             {
-                log.LOGE($"[FundamentalSET100::InsertDatebase]  {sql}");
+                log.LOGE($"{sql}");
             }
         }
         public static void StatementDatabase(object item, string db, string where)
         {
             string sql = "";
             string connetionString;
-            SqlConnection cnn;
-            connetionString = $@"Data Source={DatabaseServer};Initial Catalog={Database};User ID={Username};Password={Password}";
-            cnn = new SqlConnection(connetionString);
-            cnn.Open();
+            connetionString = $"Persist Security Info=False;server={DatabaseServer};database={Database};uid={Username};password={Password}";
+            MySqlConnection cnn = new MySqlConnection(connetionString);
+            MySqlCommand command = cnn.CreateCommand();
 
-            sql = $"Select * from dbo.{db} where {where}";
-            SqlCommand command = new SqlCommand(sql, cnn);
-            command.Parameters.AddWithValue("@zip", "india");
+            sql = $"Select * from {db} where {where}";
+            command.CommandText = sql;
+
+            try
+            {
+                cnn.Open();
+            }
+            catch (Exception erro)
+            {
+                log.LOGE("Erro" + erro);
+            }
+
             bool event_case = false;
-            using (SqlDataReader reader = command.ExecuteReader())
+            using (MySqlDataReader reader = command.ExecuteReader())
             {
                 if (!reader.Read())
                 {
@@ -240,7 +247,7 @@ namespace FindStockService
         }
         public static string GetInsertSQL(object item, string db)
         {
-            string sql = $"INSERT INTO dbo.{db} (:columns:) VALUES (:values:);";
+            string sql = $"INSERT INTO {db} (:columns:) VALUES (:values:);";
 
             string[] columns = new string[item.GetType().GetProperties().Count()];
             string[] values = new string[item.GetType().GetProperties().Count()];
@@ -258,7 +265,7 @@ namespace FindStockService
         }
         public static string GetUpdateSQL(object item, string db, string whare)
         {
-            string sql = $"UPDATE dbo.{db} SET :update: WHERE {whare} ;";
+            string sql = $"UPDATE {db} SET :update: WHERE {whare} ;";
 
             string[] columns = new string[item.GetType().GetProperties().Count()];
             string[] values = new string[item.GetType().GetProperties().Count()];
@@ -302,48 +309,48 @@ namespace FindStockService
             if (date == "null")
                 return date;
 
-            var parts = date.Split(' ');
+            var parts = date.Split('/');
             int mm;
-            switch (parts[0])
+            switch (Int32.Parse(parts[1]))
             {
-                case "January":
+                case 1:
                     mm = 1;
                     break;
-                case "February":
+                case 2:
                     mm = 2;
                     break;
-                case "March":
+                case 3:
                     mm = 3;
                     break;
-                case "April":
+                case 4:
                     mm = 4;
                     break;
-                case "May":
+                case 5:
                     mm = 5;
                     break;
-                case "June":
+                case 6:
                     mm = 6;
                     break;
-                case "July":
+                case 7:
                     mm = 7;
                     break;
-                case "August":
+                case 8:
                     mm = 8;
                     break;
-                case "September":
+                case 9:
                     mm = 9;
                     break;
-                case "October":
+                case 10:
                     mm = 10;
                     break;
-                case "November":
+                case 11:
                     mm = 11;
                     break;
                 default:
                     mm = 12;
                     break;
             }
-            int dd = Convert.ToInt32(parts[1]);
+            int dd = Convert.ToInt32(parts[0]);
             int yy = Convert.ToInt32(parts[2]);
 
             return $"{yy}-{mm}-{dd}";
